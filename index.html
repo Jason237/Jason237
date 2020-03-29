@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quadratic Calculator and Graph</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="quadscripts.js" type="text/javascript"></script>
+    <style>
+
+    .sidenav {
+        height: 100%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+        .row.content {
+            height: auto;
+        }
+    }
+
+    .navbar {
+        background-color: pink;
+    }
+
+    .coeff {
+        width: 80%;
+        background-color: powderblue;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    canvas {
+        display: block;
+        width: 70%;
+        border-style: dashed;
+        border-color: pink;
+        border-width: 5px;
+        background-color: powderblue;
+        margin-top: 5px;
+    }
+
+    #answerBox {
+        width: 18%;
+    }
+
+    .color1 {
+        background-color: powderblue;
+    }
+
+    .color2 {
+        background-color: pink;
+    }
+
+    #zoomBox {
+        background-color: powderblue;
+    }
+
+    body {
+        font-family: 'VT323', monospace;
+    }
+    </style>
+</head>
+
+<body onload="init()">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Math Solutions</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Quadratic Calculator
+                    </a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <div class="coeff">
+                    <p class="formInfo">Coefficients go here
+                        <br> a =
+                        <input size="5" type="text" id="linA" value="">
+                        <br> b =
+                        <input size="5" type="text" id="linB" value="">
+                        <br> c =
+                        <input size="5" type="text" id="constant" value="">
+                        <br>
+                        <button class="btn" onclick="QF()">Submit Values</button>
+                        <button class="btn" onclick="zoomIn(), QF()">+</button>
+                        <button id="outZoom" class="btn" onclick="zoomOut(), QF()">-</button>
+                        <button class="btn" onclick="clearCanvas()">Clear</button>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-8 text-left">
+                <canvas class="canvasGrids" id="mycanvas"></canvas>
+            </div>
+            <div id="answerBox" class="col-sm-2">
+                <div id="quadformanswer" class="color1">Your Quadratic Formula Answer</div>
+                <div id="quadformanswer2" class="color2">Other Answer</div>
+                <div>---------------</div>
+                <div id="vertex" class="color1">Your Vertex</div>
+                <div>---------------</div>
+                <div id="yInt" class="color2">Y Intercept</div>
+                <div>---------------</div>
+                <div id="correspondingPoint" class="color1">The Corresponding Point</div>
+                <div>---------------</div>
+                <div id="pointOnGraph" class="color2">Point On Graph</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
